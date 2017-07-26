@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="J0m-vU-v5T">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--Estimator View Controller-->
+        <scene sceneID="4vF-xO-fjh">
+            <objects>
+                <viewController id="3uX-Qv-W7B" customClass="EPEstimatorViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lYA-Dc-MmI"/>
+                        <viewControllerLayoutGuide type="bottom" id="GEu-mt-nG6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yJa-HH-9tp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQf-ds-Cqd">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="0mA-Zl-tPe"/>
+                                    <barButtonItem title="Start" width="248" id="IkI-rL-Dw0">
+                                        <connections>
+                                            <segue destination="Ulf-h0-Cu7" kind="modal" identifier="Planning" id="B4U-ai-CJE"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="3ay-Qj-R4h"/>
+                                </items>
+                            </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="66" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="64p-0f-tMN">
+                                <rect key="frame" x="0.0" y="66" width="320" height="457"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EstimatorItemCell" rowHeight="65" id="sEc-1T-FKz">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="65"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sEc-1T-FKz" id="JyP-la-40L">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="64.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="3uX-Qv-W7B" id="Iag-YS-xGO"/>
+                                    <outlet property="delegate" destination="3uX-Qv-W7B" id="IBh-mp-lgY"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aQf-ds-Cqd" firstAttribute="top" secondItem="64p-0f-tMN" secondAttribute="bottom" constant="1" id="4KK-f0-sQw"/>
+                            <constraint firstItem="aQf-ds-Cqd" firstAttribute="leading" secondItem="yJa-HH-9tp" secondAttribute="leading" id="SEN-Gk-bFg"/>
+                            <constraint firstAttribute="trailing" secondItem="aQf-ds-Cqd" secondAttribute="trailing" id="gQL-OG-W9Y"/>
+                            <constraint firstItem="64p-0f-tMN" firstAttribute="top" secondItem="lYA-Dc-MmI" secondAttribute="bottom" constant="2" id="iKr-dw-Rsx"/>
+                            <constraint firstItem="aQf-ds-Cqd" firstAttribute="trailing" secondItem="64p-0f-tMN" secondAttribute="trailing" id="js0-tG-MPW"/>
+                            <constraint firstItem="aQf-ds-Cqd" firstAttribute="leading" secondItem="64p-0f-tMN" secondAttribute="leading" id="pSa-8g-4N5"/>
+                            <constraint firstItem="GEu-mt-nG6" firstAttribute="top" secondItem="aQf-ds-Cqd" secondAttribute="bottom" id="r4c-py-npa"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="J3F-Nj-zgS">
+                        <barButtonItem key="leftBarButtonItem" image="tutorial" id="78A-ag-GAn">
+                            <connections>
+                                <segue destination="uAt-Rl-lnC" kind="push" identifier="Info" id="jr0-2D-9dm"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="844-HW-PNW">
+                            <connections>
+                                <action selector="addNewEstimator:" destination="3uX-Qv-W7B" id="Daa-tC-wYq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="bbiStart" destination="IkI-rL-Dw0" id="9Oz-Pr-KfH"/>
+                        <outlet property="tableView" destination="64p-0f-tMN" id="r4c-tq-thz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YZA-Yn-Bqr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="443" y="-44"/>
+        </scene>
+        <!--Info View Controller-->
+        <scene sceneID="mYc-rJ-DUW">
+            <objects>
+                <viewController id="uAt-Rl-lnC" customClass="EPInfoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="psw-AT-Ko7"/>
+                        <viewControllerLayoutGuide type="bottom" id="NHu-Dq-Qwh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="n7U-m4-iUQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="PmE-iN-ApX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aa7-EN-6yA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1003" y="-812"/>
+        </scene>
+        <!--1-->
+        <scene sceneID="gkp-sJ-Djp">
+            <objects>
+                <viewController id="ih3-CI-B6T" customClass="EPPlanningViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="So4-cU-19g"/>
+                        <viewControllerLayoutGuide type="bottom" id="36b-bK-muA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vsf-md-uND">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l5n-fW-g0j">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem image="refresh" id="g0q-vJ-kyI">
+                                        <connections>
+                                            <action selector="refreshPlanning:" destination="ih3-CI-B6T" id="fgg-BX-dsJ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="flexibleSpace" id="stx-SB-jDy"/>
+                                    <barButtonItem image="turnOn" id="tQ5-2V-QOD">
+                                        <connections>
+                                            <segue destination="Snh-Dn-A8U" kind="modal" identifier="showResult" id="buR-PV-HjY"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="flexibleSpace" id="9bg-Sq-ABS"/>
+                                    <barButtonItem image="Result" id="ewb-xq-jyL">
+                                        <connections>
+                                            <segue destination="Rqn-sD-BIh" kind="push" identifier="showRecord" id="GJT-kC-Esp"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8k4-8e-dM2">
+                                <rect key="frame" x="0.0" y="66" width="320" height="457"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlanningItemCell" rowHeight="65" id="6LB-hE-veV">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="65"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6LB-hE-veV" id="D46-ai-cn8">
+                                            <rect key="frame" x="0.0" y="0.0" width="253" height="64.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="IdP-1a-0ad" kind="push" identifier="PickPoker" trigger="accessoryAction" id="vXL-eY-Got"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ih3-CI-B6T" id="MHy-89-TRf"/>
+                                    <outlet property="delegate" destination="ih3-CI-B6T" id="JRK-qA-yah"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="l5n-fW-g0j" firstAttribute="top" secondItem="8k4-8e-dM2" secondAttribute="bottom" constant="1" id="55V-QY-yBh"/>
+                            <constraint firstItem="l5n-fW-g0j" firstAttribute="top" secondItem="8k4-8e-dM2" secondAttribute="bottom" constant="1" id="5PP-zI-hoi"/>
+                            <constraint firstItem="l5n-fW-g0j" firstAttribute="trailing" secondItem="8k4-8e-dM2" secondAttribute="trailing" id="60s-DQ-tud"/>
+                            <constraint firstItem="8k4-8e-dM2" firstAttribute="top" secondItem="So4-cU-19g" secondAttribute="bottom" constant="2" id="M9L-1R-L8u"/>
+                            <constraint firstItem="36b-bK-muA" firstAttribute="top" secondItem="l5n-fW-g0j" secondAttribute="bottom" id="S60-wp-mFP"/>
+                            <constraint firstAttribute="trailing" secondItem="l5n-fW-g0j" secondAttribute="trailing" id="n1o-qc-00Q"/>
+                            <constraint firstItem="l5n-fW-g0j" firstAttribute="leading" secondItem="vsf-md-uND" secondAttribute="leading" id="oGx-54-jDZ"/>
+                            <constraint firstItem="l5n-fW-g0j" firstAttribute="leading" secondItem="8k4-8e-dM2" secondAttribute="leading" id="zP9-qk-fVk"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="1" id="1uY-gT-fbw">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="2O3-t7-7zk">
+                            <connections>
+                                <segue destination="ZKv-UQ-Upa" kind="unwind" unwindAction="unwindToEstimator:" id="pum-Mt-zfO"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="resultBarItem" destination="ewb-xq-jyL" id="CV4-WD-iJt"/>
+                        <outlet property="tableView" destination="8k4-8e-dM2" id="25B-e4-ba6"/>
+                        <outlet property="uncoverBarItem" destination="tQ5-2V-QOD" id="OZz-6J-khN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vm5-li-yVZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="ZKv-UQ-Upa" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1519" y="-44"/>
+        </scene>
+        <!--Pick Poker View Controller-->
+        <scene sceneID="J2o-hW-BSw">
+            <objects>
+                <viewController id="IdP-1a-0ad" customClass="EPPickPokerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Twh-qF-FZ4"/>
+                        <viewControllerLayoutGuide type="bottom" id="xFb-qv-TkL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="F3R-7I-nsu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rej-pd-Bvu">
+                                <rect key="frame" x="127" y="89" width="66" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="CLX-X4-BSy"/>
+                                    <constraint firstAttribute="width" constant="66" id="mzL-YB-nSa"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uo-pL-ZzU">
+                                <rect key="frame" x="20" y="191" width="61" height="94"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="94" id="Nz8-gY-WmK"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="61" id="Sp0-w9-hxh"/>
+                                    <constraint firstAttribute="width" constant="61" id="VkC-0b-UIV"/>
+                                    <constraint firstAttribute="height" constant="94" id="vC6-aT-lRI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="32"/>
+                                <state key="normal" title="0" backgroundImage="PokerTemplate">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="bj3-d6-ctr" kind="unwind" unwindAction="unwindToPlanning:" id="5Zg-8N-cWM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0XU-yq-KG9">
+                                <rect key="frame" x="94" y="191" width="61" height="94"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="61" id="MPx-PZ-XzN"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="94" id="ewk-GS-kkF"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="61" id="hlz-EW-nXS"/>
+                                    <constraint firstAttribute="height" constant="94" id="qgo-ly-OKp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="32"/>
+                                <state key="normal" title="1" backgroundImage="PokerTemplate">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="bj3-d6-ctr" kind="unwind" unwindAction="unwindToPlanning:" id="kXD-Rd-Z2h"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wax-kT-HOC">
+                                <rect key="frame" x="169" y="191" width="61" height="94"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="61" id="AM8-QL-eIw"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="61" id="ak3-WQ-ZnR"/>
+                                    <constraint firstAttribute="height" constant="94" id="cEK-A4-UWX"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="94" id="vAI-WP-P7L"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="32"/>
+                                <state key="normal" title="2" backgroundImage="PokerTemplate">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="bj3-d6-ctr" kind="unwind" unwindAction="unwindToPlanning:" id="r0x-C2-Yw5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ny0-2r-5uk">
+                                <rect key="frame" x="243" y="191" width="61" height="94"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="61" id="3oU-KG-sRa"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="61" id="aQJ-SX-mJY"/>
+                                    <constraint firstAttribute="height" constant="94" id="iKX-sq-SAG"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="94" id="pLk-G1-cHh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="32"/>
+                                <state key="normal" title="3" backgroundImage="PokerTemplate">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="bj3-d6-ctr" kind="unwind" unwindAction="unwindToPlanning:" id="YhE-cQ-0o9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UGx-bC-4Nz">
+                                <rect key="frame" x="20" y="305" width="61" height="94"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="94" id="Rvd-g9-uD9"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="61" id="aQP-8c-mv6"/>
+                                    <constraint firstAttribute="height" constant="94" id="oGy-0o-3JQ"/>
+                                    <constraint firstAttribute="width" constant="61" id="sWv-qV-jQg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="32"/>
+                                <state key="normal" title="5" backgroundImage="PokerTemplate">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="bj3-d6-ctr" kind="unwind" unwindAction="unwindToPlanning:" id="ozr-G8-QoW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Sz-GI-rpU">
+                                <rect key="frame" x="94" y="305" width="61" height="94"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="94" id="0XE-JG-8Bn"/>
+                                    <constraint firstAttribute="height" constant="94" id="1bc-lq-WUc"/>
+                                    <constraint firstAttribute="width" constant="61" id="NjX-Q2-Ag5"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="61" id="RfA-xc-f8L"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="32"/>
+                                <state key="normal" title="8" backgroundImage="PokerTemplate">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="bj3-d6-ctr" kind="unwind" unwindAction="unwindToPlanning:" id="5bo-pJ-zR0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9d-hg-VJe">
+                                <rect key="frame" x="169" y="305" width="61" height="94"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="61" id="c5m-xk-22H"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="94" id="m0X-b8-9lc"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="61" id="mPC-AL-sDl"/>
+                                    <constraint firstAttribute="height" constant="94" id="q0A-p6-EUD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="32"/>
+                                <state key="normal" title="13" backgroundImage="PokerTemplate">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="bj3-d6-ctr" kind="unwind" unwindAction="unwindToPlanning:" id="gCs-Zr-FC7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYh-xC-de9">
+                                <rect key="frame" x="243" y="305" width="61" height="94"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="94" id="Bev-K7-GQk"/>
+                                    <constraint firstAttribute="width" constant="61" id="Ify-Qz-VyI"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="61" id="lZl-Eb-g2Y"/>
+                                    <constraint firstAttribute="height" constant="94" id="tDg-8g-gz7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="32"/>
+                                <state key="normal" title="21" backgroundImage="PokerTemplate">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="bj3-d6-ctr" kind="unwind" unwindAction="unwindToPlanning:" id="aPk-V5-lgu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDB-70-5bY">
+                                <rect key="frame" x="19" y="417" width="61" height="94"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="94" id="N5R-0S-S2F"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="61" id="Vxr-y9-DP4"/>
+                                    <constraint firstAttribute="width" constant="61" id="bV9-2D-gRG"/>
+                                    <constraint firstAttribute="height" constant="94" id="s27-gT-0pN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="32"/>
+                                <state key="normal" title="40" backgroundImage="PokerTemplate">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="bj3-d6-ctr" kind="unwind" unwindAction="unwindToPlanning:" id="lFJ-4i-iXk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fn8-9P-AUA">
+                                <rect key="frame" x="94" y="417" width="61" height="94"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="61" id="JYi-eD-Hhy"/>
+                                    <constraint firstAttribute="height" constant="94" id="fya-hF-gaB"/>
+                                    <constraint firstAttribute="width" constant="61" id="hVO-Kb-kna"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="94" id="jMO-2k-hnv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="21"/>
+                                <state key="normal" title="100" backgroundImage="PokerTemplate">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="bj3-d6-ctr" kind="unwind" unwindAction="unwindToPlanning:" id="NiK-oI-gff"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QeB-9s-5UU">
+                                <rect key="frame" x="169" y="417" width="61" height="94"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="61" id="SWQ-19-zty"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="94" id="mKC-ez-0rA"/>
+                                    <constraint firstAttribute="height" constant="94" id="rqe-lW-lj0"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="61" id="ycT-ps-ot8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="32"/>
+                                <state key="normal" title="?" backgroundImage="PokerTemplate">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="bj3-d6-ctr" kind="unwind" unwindAction="unwindToPlanning:" id="R23-Os-0cD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aI6-1R-6c9">
+                                <rect key="frame" x="243" y="417" width="61" height="94"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="61" id="01x-Oy-Yfs"/>
+                                    <constraint firstAttribute="width" constant="61" id="H3Y-W0-ihI"/>
+                                    <constraint firstAttribute="height" constant="94" id="Vkj-RJ-ZWZ"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="94" id="vvX-lg-LGu"/>
+                                </constraints>
+                                <state key="normal" image="coff" backgroundImage="PokerTemplate">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="bj3-d6-ctr" kind="unwind" unwindAction="unwindToPlanning:" id="bwk-kf-3KI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.20000000000000001" green="0.18431372549019609" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="xFb-qv-TkL" firstAttribute="top" secondItem="QeB-9s-5UU" secondAttribute="bottom" constant="57" id="1mq-E4-KPL"/>
+                            <constraint firstItem="Fn8-9P-AUA" firstAttribute="leading" secondItem="BDB-70-5bY" secondAttribute="trailing" constant="14" id="5EW-TL-FWO"/>
+                            <constraint firstItem="xFb-qv-TkL" firstAttribute="top" secondItem="aI6-1R-6c9" secondAttribute="bottom" constant="57" id="8qU-mL-kgZ"/>
+                            <constraint firstItem="QeB-9s-5UU" firstAttribute="leading" secondItem="Fn8-9P-AUA" secondAttribute="trailing" constant="14" id="Bsx-xc-SEc"/>
+                            <constraint firstAttribute="trailing" secondItem="QeB-9s-5UU" secondAttribute="trailing" constant="90" id="GFF-Op-nLc"/>
+                            <constraint firstItem="QeB-9s-5UU" firstAttribute="leading" secondItem="h9d-hg-VJe" secondAttribute="leading" id="Kga-Yn-dq8"/>
+                            <constraint firstItem="0XU-yq-KG9" firstAttribute="top" secondItem="rej-pd-Bvu" secondAttribute="bottom" constant="36" id="PUt-nQ-mUx"/>
+                            <constraint firstItem="UGx-bC-4Nz" firstAttribute="top" secondItem="7uo-pL-ZzU" secondAttribute="bottom" constant="20" id="Pu1-fZ-ggZ"/>
+                            <constraint firstItem="UGx-bC-4Nz" firstAttribute="leading" secondItem="7uo-pL-ZzU" secondAttribute="leading" id="Qgw-Zg-lhp"/>
+                            <constraint firstItem="xFb-qv-TkL" firstAttribute="top" secondItem="Fn8-9P-AUA" secondAttribute="bottom" constant="57" id="Srm-pw-0Ih"/>
+                            <constraint firstItem="aI6-1R-6c9" firstAttribute="leading" secondItem="QeB-9s-5UU" secondAttribute="trailing" constant="13" id="XQS-DW-yc1"/>
+                            <constraint firstItem="7uo-pL-ZzU" firstAttribute="leading" secondItem="F3R-7I-nsu" secondAttribute="leading" constant="20" symbolic="YES" id="Xuw-Ej-nSs"/>
+                            <constraint firstItem="QeB-9s-5UU" firstAttribute="leading" secondItem="Wax-kT-HOC" secondAttribute="leading" id="ZWt-hc-tPa"/>
+                            <constraint firstItem="rej-pd-Bvu" firstAttribute="centerX" secondItem="F3R-7I-nsu" secondAttribute="centerX" id="Zpu-jM-YQE"/>
+                            <constraint firstItem="ZYh-xC-de9" firstAttribute="top" secondItem="ny0-2r-5uk" secondAttribute="bottom" constant="20" id="aeI-5P-Pbi"/>
+                            <constraint firstItem="QeB-9s-5UU" firstAttribute="top" secondItem="h9d-hg-VJe" secondAttribute="bottom" constant="18" id="brY-yF-s4m"/>
+                            <constraint firstItem="0XU-yq-KG9" firstAttribute="leading" secondItem="5Sz-GI-rpU" secondAttribute="leading" id="deR-L9-Hc5"/>
+                            <constraint firstItem="aI6-1R-6c9" firstAttribute="top" secondItem="ZYh-xC-de9" secondAttribute="bottom" constant="18" id="fka-Wo-TXQ"/>
+                            <constraint firstItem="Fn8-9P-AUA" firstAttribute="top" secondItem="5Sz-GI-rpU" secondAttribute="bottom" constant="18" id="gh0-tB-vf9"/>
+                            <constraint firstItem="ZYh-xC-de9" firstAttribute="leading" secondItem="aI6-1R-6c9" secondAttribute="leading" id="jQH-HJ-ue8"/>
+                            <constraint firstItem="xFb-qv-TkL" firstAttribute="top" secondItem="BDB-70-5bY" secondAttribute="bottom" constant="57" id="kyx-l8-fvJ"/>
+                            <constraint firstItem="h9d-hg-VJe" firstAttribute="top" secondItem="Wax-kT-HOC" secondAttribute="bottom" constant="20" id="lZB-NZ-WY3"/>
+                            <constraint firstItem="BDB-70-5bY" firstAttribute="top" secondItem="UGx-bC-4Nz" secondAttribute="bottom" constant="18" id="s3Z-sk-Mej"/>
+                            <constraint firstItem="ny0-2r-5uk" firstAttribute="leading" secondItem="ZYh-xC-de9" secondAttribute="leading" id="sVq-1Z-hhP"/>
+                            <constraint firstItem="5Sz-GI-rpU" firstAttribute="top" secondItem="0XU-yq-KG9" secondAttribute="bottom" constant="20" id="w4v-se-gBo"/>
+                            <constraint firstItem="5Sz-GI-rpU" firstAttribute="leading" secondItem="Fn8-9P-AUA" secondAttribute="leading" id="xAv-LR-2Wa"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Iom-zo-1CV"/>
+                    <connections>
+                        <outlet property="headView" destination="rej-pd-Bvu" id="bjZ-cA-Hzq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lGn-Ri-phQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="bj3-d6-ctr" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2155" y="-812"/>
+        </scene>
+        <!--1-->
+        <scene sceneID="nbM-zj-fwX">
+            <objects>
+                <viewController id="OPc-1m-isU" customClass="EPResultViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hAi-SM-uLi"/>
+                        <viewControllerLayoutGuide type="bottom" id="RM6-RY-TYk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LWl-RG-Vf5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFY-9V-LLi">
+                                <rect key="frame" x="0.0" y="89" width="320" height="103"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="126"/>
+                                <color key="textColor" red="0.035294117647058823" green="0.44705882352941173" blue="0.69803921568627447" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="eXx-TO-gpV">
+                                <rect key="frame" x="28" y="213" width="265" height="31"/>
+                                <connections>
+                                    <action selector="sliderMoved:" destination="OPc-1m-isU" eventType="valueChanged" id="xdz-fr-Y43"/>
+                                </connections>
+                            </slider>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="66" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ZqI-kP-GeZ">
+                                <rect key="frame" x="0.0" y="261" width="320" height="313"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlanningItemCell" rowHeight="65" id="ivE-cj-whF">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="65"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ivE-cj-whF" id="7el-NE-S7F">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="64.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="OPc-1m-isU" id="3e0-YS-ktQ"/>
+                                    <outlet property="delegate" destination="OPc-1m-isU" id="9Yt-X3-Gkb"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="1" id="aiy-Ym-gKr">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="WUZ-bN-8Dt">
+                            <connections>
+                                <segue destination="GgX-Ef-8Q6" kind="unwind" unwindAction="unwindToResult:" id="3YG-cZ-KCa"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="SKg-J3-UcL">
+                            <connections>
+                                <segue destination="GgX-Ef-8Q6" kind="unwind" unwindAction="unwindToResult:" id="biu-bT-1d8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="bbiCancel" destination="WUZ-bN-8Dt" id="2kx-Pk-Gzp"/>
+                        <outlet property="bbiDone" destination="SKg-J3-UcL" id="wzJ-u8-Lcs"/>
+                        <outlet property="finalResult" destination="yFY-9V-LLi" id="dhz-Sk-Q1T"/>
+                        <outlet property="resultSlider" destination="eXx-TO-gpV" id="yhW-w5-A2g"/>
+                        <outlet property="tableView" destination="ZqI-kP-GeZ" id="3LH-hw-t64"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fce-nl-XJY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="GgX-Ef-8Q6" userLabel="Exit" sceneMemberID="exit"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="22" sectionFooterHeight="22" id="VpH-g7-455">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="457"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <prototypes>
+                        <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlanningItemCell" rowHeight="65" id="fAA-Rv-fxd">
+                            <rect key="frame" x="0.0" y="22" width="320" height="65"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fAA-Rv-fxd" id="wHH-HO-H3f">
+                                <rect key="frame" x="0.0" y="0.0" width="253" height="64.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </tableViewCellContentView>
+                        </tableViewCell>
+                    </prototypes>
+                    <connections>
+                        <outlet property="dataSource" destination="ih3-CI-B6T" id="lQ4-CY-uBk"/>
+                        <outlet property="delegate" destination="ih3-CI-B6T" id="4B5-7v-dhn"/>
+                    </connections>
+                </tableView>
+            </objects>
+            <point key="canvasLocation" x="2737" y="-37"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Wcf-n0-odQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="J0m-vU-v5T" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qkc-tV-SUu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3uX-Qv-W7B" kind="relationship" relationship="rootViewController" id="wGZ-Xb-Cwg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1oJ-dF-jdX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-80" y="-44"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="DC9-rA-36R">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ulf-h0-Cu7" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wKt-tU-ppS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ih3-CI-B6T" kind="relationship" relationship="rootViewController" id="1we-Mn-SNN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xhz-C0-4UL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1003" y="-44"/>
+        </scene>
+        <!--Record View Controller-->
+        <scene sceneID="DjI-fM-6x5">
+            <objects>
+                <viewController id="Rqn-sD-BIh" customClass="EPRecordViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Yx6-Ue-MK8"/>
+                        <viewControllerLayoutGuide type="bottom" id="J6u-Lr-7Qb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BMU-rj-qVg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="H4j-sR-cix">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="634"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecordItemCell" rowHeight="66" id="Pd0-Zt-6se">
+                                        <rect key="frame" x="0.0" y="86" width="320" height="66"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pd0-Zt-6se" id="FUi-vU-ESc">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="65.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Rqn-sD-BIh" id="qG7-Uc-aFi"/>
+                                    <outlet property="delegate" destination="Rqn-sD-BIh" id="VHR-cy-N2k"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="0eT-s1-rbg">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="fIM-eH-gCY">
+                            <connections>
+                                <action selector="shareRecord:" destination="Rqn-sD-BIh" id="YoC-nX-O7Q"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="H4j-sR-cix" id="rgq-Xi-IZ2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wF8-5m-xXf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2155" y="794"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="KZD-27-j9k">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Snh-Dn-A8U" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bG9-eE-MGW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="OPc-1m-isU" kind="relationship" relationship="rootViewController" id="dXr-gg-nK9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vBD-ra-aIU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2155" y="-37"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="PokerTemplate" width="61" height="94"/>
+        <image name="Result" width="23" height="24"/>
+        <image name="coff" width="33" height="46"/>
+        <image name="refresh" width="22" height="22"/>
+        <image name="turnOn" width="18" height="25"/>
+        <image name="tutorial" width="24" height="24"/>
+    </resources>
+</document>
